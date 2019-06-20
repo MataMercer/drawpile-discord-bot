@@ -161,9 +161,9 @@ function dp_users__Command(arguments, receivedMessage){
             console.log(error);
             receivedMessage.channel.send('Unable to fetch info.');
         })
-        .finally(function () {
-            // always executed
-        });
+        // .finally(function () {
+        //     // always executed
+        // });
     }else{
         axios({
             method: 'get',
@@ -206,9 +206,9 @@ function dp_users__Command(arguments, receivedMessage){
             console.log(error);
             receivedMessage.channel.send('Unable to fetch info.');
         })
-        .finally(function () {
-            // always executed
-        });
+        // .finally(function () {
+        //     // always executed
+        // });
     }
 }
 
@@ -244,9 +244,9 @@ function dp_list_sessions__Command(arguments, receivedMessage){
         console.log(error);
         receivedMessage.channel.send('Unable to fetch info.');
       })
-      .finally(function () {
-        // always executed
-      });
+    //   .finally(function () {
+    //     // always executed
+    //   });
 }
 
 
