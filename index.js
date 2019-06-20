@@ -2,9 +2,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const axios = require('axios');
 
-const serverBaseURL = process.env.URL;
-const username = process.env.USERNAME;
-const password = process.env.PASSWORD;
+const serverBaseURL = process.env.DDBP_URL;
+const username = process.env.DDBP_USERNAME;
+const password = process.env.DDBP_PASSWORD;
 
 let defaultSessionID = '';
 let moderatorRoles = '';
@@ -253,6 +253,6 @@ function dp_list_sessions__Command(arguments, receivedMessage){
 // Get your bot's secret token from:
 // https://discordapp.com/developers/applications/
 // Click on your application -> Bot -> Token -> "Click to Reveal Token"
-bot_secret_token = process.env.TOKEN;
+bot_secret_token = process.env.DDBP_TOKEN;
 
 client.login(bot_secret_token)
