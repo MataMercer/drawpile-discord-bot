@@ -1,0 +1,11 @@
+{
+  "name": "pedroos",
+  "version": "1.0.0",
+  "description": "Discord bot for interfacing with drawpile admin API",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "discord.js": "^11.5.1"
+  }
+}
