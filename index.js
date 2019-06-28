@@ -28,10 +28,13 @@ function readConfig(){
 
 
 function setConfig(config){
-    const data = JSON.stringify(config);  
-    fs.writeFileSync('config.json', data);
+    console.log(config);
     defaultSessionID = config.defaultSessionID;
     moderatorRoles = config.moderatorRoles;
+    const data = JSON.stringify(config);  
+    fs.writeFileSync('config.json', data);
+    
+    
 
 }
 
@@ -170,8 +173,10 @@ function dp_set_default_session__Command(arguments, receivedMessage){
         receivedMessage.channel.send("No session ID given. Try `!p set-default-session <sessionID>`. If you do not know the sessionID, use `!p dp-list-sessions` for a list of sessionIDs.");
     }
     else{
-        setConfig({moderatorRoles: arguments,
-            defaultSessionID: defaultSessionID});
+        setConfig({
+            moderatorRoles: moderatorRoles,
+            defaultSessionID: arguments[0]
+        });
 
         receivedMessage.channel.send("SessionID of " + defaultSessionID + " was set as the default session to use for the bot.");
     }
