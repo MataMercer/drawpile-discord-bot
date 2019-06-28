@@ -53,8 +53,30 @@ client.on('message', (receivedMessage) => {
 })
 
 function processCommand(receivedMessage) {
-    const fullCommand = (receivedMessage.content.substr(2)).trim() // Remove the leading exclamation mark
-    const splitCommand = fullCommand.split(" ") // Split the message up in to pieces for each space
+    let fullCommand = (receivedMessage.content.substr(2)).trim() // Remove the leading exclamation mark
+    // const splitCommand = fullCommand.split(" ") // Split the message up in to pieces for each space
+
+    fullCommand = fullCommand + " ";
+    let splitCommand = [];
+    wordSoFar= "";
+    openQuoteFlag = false;
+    for(let i = 0; i < fullCommand.length; i++){
+        console.log(wordSoFar)
+        if(fullCommand.charAt(i) === '"'){
+            openQuoteFlag = !openQuoteFlag;
+        }
+        else if(fullCommand.charAt(i)===" " && !openQuoteFlag){
+            
+            splitCommand.push(wordSoFar);
+            wordSoFar = "";
+        }else{
+            
+            wordSoFar = wordSoFar + fullCommand.charAt(i);
+            console.log(wordSoFar);
+        }
+    }
+    console.log(splitCommand);
+
     const primaryCommand = splitCommand[0] // The first word directly after the exclamation is the command
     const arguments = splitCommand.slice(1) // All other words are arguments/parameters/options for the command
 
@@ -348,7 +370,7 @@ function dp_message_all__Command(arguments, receivedMessage){
             'Content-Type': 'application/json',
         },
         data: {
-            "message": "[From Discord][ "  + receivedMessage.author.username + "]:" + arguments[0]
+            "message": "[From Discord][ "  + receivedMessage.author.username + "]: " + arguments[0]
         }
       }).then(function (response) {
         // handle success
