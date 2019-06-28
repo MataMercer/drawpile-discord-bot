@@ -147,7 +147,7 @@ function help__Command(arguments, receivedMessage) {
     // }
 
 
-    const helpMessage = "-------------__Commands__--------------\n Note: commands marked with * are permissions locked. \n\n` *(Admin only)[!p set-mod-roles <role-1> <role-2> <role-n>] Set roles that can access locked commands. \n\n[!p list-mod-roles] List roles that can access locked commands.   \n\n*[!p dp-set-default-session <SessionID>] Set the session to use for commands. Use dp-list-sessions for sessionID. \n\n[!p dp-list-sessions] Lists available sessions and their IDs \n\n[!p dp-users] Lists users currently online. If no default session is set, it will list all users.\n\n[!p dp-message-all <MessageText>] Sends a message to the session from Discord. \n\n[!p dp-alert-all <AlertText>] Sends an alert to the session from Discord.`";
+    const helpMessage = "-------------__Commands__--------------\n Note: commands marked with * are permissions locked. \n\n` *(Admin only)[!p set-mod-roles <role-1> <role-2> <role-n>] Set roles that can access locked commands. \n\n[!p list-mod-roles] List roles that can access locked commands.   \n\n*[!p dp-set-default-session <SessionID>] Set the session to use for commands. Use dp-list-sessions for sessionID. \n\n[!p dp-list-sessions] Lists available sessions and their IDs \n\n[!p dp-users] Lists users currently online. If no default session is set, it will list all users.\n\n*[!p dp-message-all <MessageText>] Sends a message to the session from Discord. \n\n*[!p dp-alert-all <AlertText>] Sends an alert to the session from Discord.`";
     receivedMessage.channel.send(helpMessage);
 
 }
@@ -205,9 +205,6 @@ function dp_set_default_session__Command(arguments, receivedMessage){
 }
 
 function dp_users__Command(arguments, receivedMessage){
-    if(!check_auth(receivedMessage)){
-        return;
-    }
 
     if(defaultSessionID){
         axios({
